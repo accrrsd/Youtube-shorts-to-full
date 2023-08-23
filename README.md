@@ -21,5 +21,5 @@
 -- Because of Google's payment policy. i can't upload the extension directly to google market so i'll just give it to you
 
 1. Open main.crx, doesn't work? Not a problem, if you use google — paste chrome://extensions/ in url OR find extension menu in settings of your browser
-   - Turn on DEV mode and then open main.crx.
+   - Turn on DEV mode and then open main.crx with your browser.
 2. Profit.
