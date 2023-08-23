@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Shorts to Full Videos",
+  "version": "1.0",
+  "description": "Open YouTube Shorts to Full Videos in new tab. Just right click - to full video",
+  "permissions": ["activeTab"],
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
