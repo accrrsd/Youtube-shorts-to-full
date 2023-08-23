@@ -18,8 +18,16 @@
 
 ### How to install?
 
--- Because of Google's payment policy. i can't upload the extension directly to google market so i'll just give it to you
+- in GOOGLE <br>
+  -- Because of Google's payment policy AND because of the extension distribution policy - you need to package the MAIN folder yourself. i can't upload the extension directly to google market so i'll just give it to you.
+  1.  Go to google extensions, <a href="chrome://extensions" target="_blank">by url</a> or by settings-extension.
+  2.  Turn on DEV mode and click "load unpacked extension" then choose that extension
+  3.  Profit?
 
-1. Open main.crx, doesn't work? Not a problem, if you use google — paste chrome://extensions/ in url OR find extension menu in settings of your browser
-   - Turn on DEV mode and then open main.crx.
-2. Profit.
+<br>
+
+- In Other Browsers
+  1.  Open main.crx, doesn't work? Not a problem, find extension menu in settings of your browser
+      - Turn on DEV mode and then open main.crx.
+      - Hope it will works otherwise check google instructions higher
+  2.  Profit.
