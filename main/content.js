@@ -31,6 +31,9 @@ if (window.location.href.indexOf('https://www.youtube.com/shorts/') !== -1) {
 
   newDiv.innerHTML = newDivInnerHTML
 
+  document.removeEventListener('yt-navigate-finish', addConversionLink)
+  document.addEventListener('yt-navigate-finish', addConversionLink)
+
   function addConversionLink() {
     const currentUrl = window.location.href
     const videoID = currentUrl.split('/').pop()
