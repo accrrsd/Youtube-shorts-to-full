@@ -1,9 +1,11 @@
-if (window.location.href.indexOf('https://www.youtube.com/shorts/') !== -1) {
+const main = () => {
+  if (window.location.href.indexOf('https://www.youtube.com/shorts/') === -1) return
   const newDiv = document.createElement('a')
   newDiv.className = 'ytp-menuitem'
   newDiv.target = '_blank'
   newDiv.role = 'menuitem'
   newDiv.href = ''
+  newDiv.id = 'to-full-video'
 
   const newDivInnerHTML = `
     <div class="ytp-menuitem-icon" style="color:white">
@@ -34,23 +36,50 @@ if (window.location.href.indexOf('https://www.youtube.com/shorts/') !== -1) {
   document.removeEventListener('yt-navigate-finish', addConversionLink)
   document.addEventListener('yt-navigate-finish', addConversionLink)
 
-  function addConversionLink() {
+  function addConversionLink(elem) {
     const currentUrl = window.location.href
     const videoID = currentUrl.split('/').pop()
     const newVideoUrl = `https://www.youtube.com/watch?v=${videoID}`
-    newDiv.href = newVideoUrl
+    elem.href = newVideoUrl
   }
 
   const observer = new MutationObserver((mutationsList, observer) => {
     const targetNode = document.querySelector('body > div.ytp-popup.ytp-contextmenu > div > div')
+    targetNode.style.height = 'fit-content'
+
     if (targetNode) {
       observer.disconnect() // Отключаем наблюдение, так как элемент найден
-      // Вставляем элемент перед пятым ребенком
-      targetNode.style.height = 'fit-content'
-      addConversionLink()
-      targetNode.insertBefore(newDiv, targetNode.children[4])
+      const elemExist = document.querySelector('#to-full-video')
+      if (elemExist) addConversionLink(elemExist)
+      else {
+        // Вставляем элемент перед пятым ребенком
+        addConversionLink(newDiv)
+        targetNode.insertBefore(newDiv, targetNode.children[4])
+      }
     }
   })
 
   observer.observe(document.body, { childList: true, subtree: true })
 }
+
+let oldHref = document.location.href
+let firstLoad = true
+const observeEvent = new Event('windowUrlChange')
+
+const observeUrlChange = () => {
+  if (firstLoad) {
+    window.dispatchEvent(observeEvent)
+    firstLoad = false
+  }
+  const body = document.querySelector('body')
+  const observer = new MutationObserver((mutations) => {
+    if (oldHref !== document.location.href) {
+      oldHref = document.location.href
+      window.dispatchEvent(observeEvent)
+    }
+  })
+  observer.observe(body, { childList: true, subtree: true })
+}
+
+window.addEventListener('load', observeUrlChange)
+window.addEventListener('windowUrlChange', main)
