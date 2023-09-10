@@ -21,7 +21,7 @@
 - in GOOGLE <br>
   -- Because of Google's payment policy AND because of the extension distribution policy - you need to package the MAIN folder yourself. i can't upload the extension directly to google market so i'll just give it to you.
   1.  Go to google extensions, <a href="chrome://extensions" target="_blank">by url</a> or by settings-extension.
-  2.  Turn on DEV mode and click "load unpacked extension" then choose that extension
+  2.  Turn on DEV mode and click "load unpacked extension" then choose that extension (main folder)
   3.  Profit?
 
 <br>
